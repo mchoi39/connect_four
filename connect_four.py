@@ -20,8 +20,8 @@ def connect_four():
     global TURN_NUMBER
     b = Board()
     pygame.init()
-    screen = pygame.display.set_mode((125 * b.columns, 125 * (b.rows + 1)))
-    square = 125
+    screen = pygame.display.set_mode((75 * b.columns, 75 * (b.rows + 1)))
+    square = 75
     draw(b, square)
 
     pygame.display.update()
@@ -35,9 +35,9 @@ def connect_four():
 
         for e in pygame.event.get():
             if e.type == pygame.MOUSEMOTION:
-                pygame.draw.rect(screen, (0, 0, 0), (0, 0, 125 * b.columns, 125))
+                pygame.draw.rect(screen, (0, 0, 0), (0, 0, 75 * b.columns, 75))
                 if TURN_NUMBER % 2 == 0:
-                    pygame.draw.circle(screen, (255, 0, 0), (e.pos[0], 125 / 2), 125 / 2)
+                    pygame.draw.circle(screen, (255, 0, 0), (e.pos[0], 75 / 2), 75 / 2)
             pygame.display.update()
 
             if e.type == pygame.MOUSEBUTTONDOWN:

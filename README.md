@@ -19,3 +19,7 @@ python3 connect_four.py
 or
 python connect_four.py
 ```
+
+![Enter options](/images_readme/options.png)
+
+4. Play the game
