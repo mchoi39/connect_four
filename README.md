@@ -2,7 +2,12 @@
 
 ## Installation
 1. Cd into the project folder
+   
+![CD into folder](/images_readme/cd.png)
+   
+
 2. Install pygame
+
 ```
 pip3 install pygame
 or

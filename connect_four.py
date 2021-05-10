@@ -282,4 +282,6 @@ def draw_ai_pieces(board, square):
 
 
 if __name__ == '__main__':
+    TURN_NUMBER = int(input("Enter 0 or 1. 0 for Player starts, 1 for AI starts: "))
+    MODE = int(input("Enter 1 for MINIMAX and 0 for RNG: "))
     connect_four()
