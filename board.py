@@ -114,8 +114,10 @@ class Board():
                     return True
                 if self.check_downward(2, 4, 1):
                     return True
-            elif i == 3:  # check (3, 0), row - 1, col + 1 each iteration
-                if self.check_upward(3, 0, 1):
+            elif i == 3:  # check (3, 0), (3, 1), (3, 2) row - 1, col + 1 each iteration
+                if self.check_upward(3, 0, 1) or self.check_upward(3, 1, 1):
+                    return True
+                if self.check_upward(3, 2, 1):
                     return True
             elif i == 4:  # check (4, 0), (4, 1), row - 1, col + 1 each iteration
                 if self.check_upward(4, 0, 1) or self.check_upward(4, 1, 1):

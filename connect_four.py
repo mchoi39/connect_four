@@ -15,6 +15,7 @@ AI = 2
 TURN_NUMBER = 0
 # change mode for AI/RNG (1 for AI, anything else for RNG)
 MODE = 1
+DEPTH = 6
 root = tkinter.Tk()
 root.withdraw()
 
@@ -67,7 +68,7 @@ def connect_four():
 
         if TURN_NUMBER % 2 == 1:
             if MODE == 1:
-                col, val = minimax(b, 6, float('-inf'), float('+inf'), True)
+                col, val = minimax(b, DEPTH, float('-inf'), float('+inf'), True)
                 b.drop_piece(col, AI)
             else:
                 rng(b, AI)
@@ -294,4 +295,5 @@ def draw_ai_pieces(board, square):
 if __name__ == '__main__':
     TURN_NUMBER = int(input("Enter 0 or 1. 0 for Player starts, 1 for AI starts: "))
     MODE = int(input("Enter 1 for MINIMAX and 0 for RNG: "))
+    DEPTH = int(input("Enter the depth of the search tree (Enter 6 for default). Depth of over 6 takes a few seconds for AI to make a move: "))
     connect_four()
