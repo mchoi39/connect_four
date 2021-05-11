@@ -4,6 +4,8 @@ import sys
 import math
 import random
 import copy
+import tkinter
+from tkinter import messagebox
 
 # color of pieces
 EMPTY = 0
@@ -13,6 +15,8 @@ AI = 2
 TURN_NUMBER = 0
 # change mode for AI/RNG (1 for AI, anything else for RNG)
 MODE = 1
+root = tkinter.Tk()
+root.withdraw()
 
 
 def connect_four():
@@ -48,14 +52,16 @@ def connect_four():
                     b.drop_piece(column, 1)
                     if b.check_win_conditions():
                         print("PLAYER WON")
-                        sys.exit()  # display win screen
+                        messagebox.showinfo("Game Over", "PLAYER WINS!")
+                        game_in_progress = False
+                        break
                     TURN_NUMBER += 1
 
                 draw(b, square)
                 draw_player_pieces(b, square)
                 draw_ai_pieces(b, square)
             if e.type == pygame.QUIT:
-                pygame.time.wait(5000)
+                # pygame.time.wait(5000)
                 sys.exit()
             pygame.display.update()
 
@@ -71,10 +77,14 @@ def connect_four():
             pygame.display.update()
             if b.check_win_conditions():
                 print("AI WON")
-                sys.exit()
+                messagebox.showinfo("Game Over", "AI WINS!")
+                game_in_progress = False
+                break
             TURN_NUMBER += 1
 
         # do AI inserting a piece part. Needa do algorithm and drop piece and check win condition
+
+
 
 
 def score_by_count(four_pieces, piece):

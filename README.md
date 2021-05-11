@@ -13,7 +13,16 @@ pip3 install pygame
 or
 pip install pygame
 ```
-3. Run the project
+
+3. Install tkinter
+
+```
+pip3 install tkinter
+or
+pip install tkinter
+```
+
+4. Run the project
 ```
 python3 connect_four.py
 or
@@ -22,4 +31,4 @@ python connect_four.py
 
 ![Enter options](/images_readme/options.png)
 
-4. Play the game
+5. Play the game

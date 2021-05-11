@@ -23,9 +23,10 @@ class Board():
     # drop a piece
     def drop_piece(self, col, color):
         for i in reversed(range(self.rows)):
-            if self.board[i][col] == 0:
-                self.board[i][col] = color
-                break
+            if i is not None and col is not None and color is not None:
+                if self.board[i][col] == 0:
+                    self.board[i][col] = color
+                    break
 
     # check for winning conditions
     def check_win_conditions(self):
