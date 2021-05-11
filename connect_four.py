@@ -16,6 +16,7 @@ TURN_NUMBER = 0
 # change mode for AI/RNG (1 for AI, anything else for RNG)
 MODE = 1
 DEPTH = 6
+SCORING_TYPE = 0 # 0 for count how many, 1 for count how many in a row
 root = tkinter.Tk()
 root.withdraw()
 
@@ -157,8 +158,10 @@ def get_heuristic_val(b, piece):
             pc3 = board[row][col + 2]
             pc4 = board[row][col + 3]
             four_pieces = [pc1, pc2, pc3, pc4]
-            score += score_by_count(four_pieces, piece)
-            # score += score_four_pieces(four_pieces, piece)
+            if SCORING_TYPE == 1:
+                score += score_by_count(four_pieces, piece)
+            else:
+                score += score_four_pieces(four_pieces, piece)
     # vertical
     for row in range(b.rows - 3):
         for col in range(b.columns):
@@ -168,8 +171,10 @@ def get_heuristic_val(b, piece):
             pc4 = board[row + 3][col]
 
             four_pieces = [pc1, pc2, pc3, pc4]
-            score += score_by_count(four_pieces, piece)
-            # score += score_four_pieces(four_pieces, piece)
+            if SCORING_TYPE == 1:
+                score += score_by_count(four_pieces, piece)
+            else:
+                score += score_four_pieces(four_pieces, piece)
     # pos diagonal
     for row in range(3, 6):  # points to test: (3,0) (3,1) (3,2) (3,3) (4,0) (4,1) (4,2) (4,3) (5,0) (5,1) (5,2) (5,3)
         for col in range(4):
@@ -180,7 +185,10 @@ def get_heuristic_val(b, piece):
 
             four_pieces = [pc1, pc2, pc3, pc4]
             # score += score_four_pieces(four_pieces, piece)
-            score += score_by_count(four_pieces, piece)
+            if SCORING_TYPE == 1:
+                score += score_by_count(four_pieces, piece)
+            else:
+                score += score_four_pieces(four_pieces, piece)
     # neg diagonal
     for row in range(3):
         for col in range(4):
@@ -191,7 +199,10 @@ def get_heuristic_val(b, piece):
 
             four_pieces = [pc1, pc2, pc3, pc4]
             # score += score_four_pieces(four_pieces, piece)
-            score += score_by_count(four_pieces, piece)
+            if SCORING_TYPE == 1:
+                score += score_by_count(four_pieces, piece)
+            else:
+                score += score_four_pieces(four_pieces, piece)
     return score
 
 
@@ -295,5 +306,7 @@ def draw_ai_pieces(board, square):
 if __name__ == '__main__':
     TURN_NUMBER = int(input("Enter 0 or 1. 0 for Player starts, 1 for AI starts: "))
     MODE = int(input("Enter 1 for MINIMAX and 0 for RNG: "))
-    DEPTH = int(input("Enter the depth of the search tree (Enter 6 for default). Depth of over 6 takes a few seconds for AI to make a move: "))
+    if MODE == 1:
+        SCORING_TYPE = int(input("Enter 1 for count how many present scoring (BETTER), 0 for how many in a row scoring (WORSE): "))
+        DEPTH = int(input("Enter the depth of the search tree (Enter 6 for default). Depth of over 6 takes a few seconds for AI to make a move: "))
     connect_four()
